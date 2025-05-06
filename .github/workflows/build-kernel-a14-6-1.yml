@@ -27,7 +27,7 @@ on:
           - Other(Khác/Đã chỉ định)
         default: Dev(Phát triển)
       version:
-        description: 'Tên phiên bản tùy chỉnh (ví dụ: ký tự sau 6.1.93/để trống để sử dụng số phiên bản mặc định)'
+        description: 'Tên phiên bản tùy chỉnh (ví dụ: ký tự sau 6.1.93/để trống sẽ sử dụng số phiên bản mặc định)'
         required: false
         type: string
 jobs:
