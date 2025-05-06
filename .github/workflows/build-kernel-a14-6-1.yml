@@ -16,7 +16,7 @@ on:
           - Next
           - MKSU
           - SukiSU
-        default: SukiSU
+        default: Next
       kernelsu_branch:
         description: "Chọn nhánh ksu"
         required: true
