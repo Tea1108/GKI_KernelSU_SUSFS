@@ -142,7 +142,7 @@ jobs:
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
           git clone https://github.com/izsdeaman97/kernel_patches.git
           # Kho lưu trữ bản vá của Sukisu
-          git clone https://github.com/ShirkNeko/SukiSU_patch.git
+          git clone https://github.com/izsdeaman97/SukiSU_patch.git
       - name: Đặt biến môi trường CONFIG
         run: |
           # Set CONFIG dynamically based on inputs values
