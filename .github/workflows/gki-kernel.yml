@@ -37,6 +37,14 @@ on:
       version:
         required: false
         type: string
+      use_zram:
+        required: true
+        type: boolean
+        default: true
+      use_kpm:
+        required: true
+        type: boolean
+        default: true
 
 jobs:
   build-kernel-kernelsu-susfs:
@@ -282,6 +290,7 @@ jobs:
           fi
           
       - name: Sao chép các tệp nguồn và áp dụng các bản vá LZ4KD & ZSTDN
+        if: ${{ inputs.use_zram }}
         run: |
           echo "Changing to configuration directory: $CONFIG..."
           cd "$CONFIG/common"
@@ -315,6 +324,7 @@ jobs:
           fi
       
       - name: Cấu hình LZ4KD&ZSTDN
+        if: ${{ inputs.use_zram }}
         run: |
           echo "Viết phụ thuộc cấu hình LZ4KD ZSTD"
           CONFIG_FILE="$CONFIG/common/arch/arm64/configs/gki_defconfig"
@@ -489,7 +499,7 @@ jobs:
             fi
             ccache --show-stats
       - name: Tệp img bản vá Android 12 và Android 13 (chỉ dành cho sukisu)
-        if: ${{ inputs.kernelsu_variant == 'SukiSU' && (inputs.android_version == 'android12' || inputs.android_version == 'android13') }}
+        if: ${{ inputs.use_kpm && inputs.kernelsu_variant == 'SukiSU' && (inputs.android_version == 'android12' || inputs.android_version == 'android13') }}
         run: |
           if [ "${{ inputs.kernel_version }}" != "6.6" ]; then
             echo "Patching Image file..."
@@ -503,7 +513,7 @@ jobs:
           fi
 
       - name: Tệp img bản vá Android 14 và Android 15 (chỉ dành cho sukisu)
-        if: ${{ inputs.kernelsu_variant == 'SukiSU' && (inputs.android_version == 'android14' || inputs.android_version == 'android15') }}
+        if: ${{ inputs.use_kpm && inputs.kernelsu_variant == 'SukiSU' && (inputs.android_version == 'android14' || inputs.android_version == 'android15') }}
         run: |
           if [ "${{ inputs.kernel_version }}" != "6.6" ]; then
             echo "Patching Image file..."
