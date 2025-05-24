@@ -23,7 +23,7 @@ jobs:
       - name: Cài đặt phụ thuộc
         run: sudo apt update && sudo apt upgrade -y && sudo apt install -y git curl jq
 
-      - name:Thiết lập biến môi trường KSU
+      - name: Thiết lập biến môi trường KSU
         run: |
           if [ "${{ inputs.kernelsu_variant }}" == "Next" ]; then
             echo "This is the Next variant"
