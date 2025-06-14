@@ -393,7 +393,7 @@ jobs:
           case "${{ inputs.kernelsu_variant }}" in
             "Official")
               echo "Applying Manager patch for Official KernelSU..."
-              #cp ../kernel_patches/ksu/manager.patch ./
+              cp ../kernel_patches/ksu/manager.patch ./
               ;;
             "NEXT")
               echo "Applying Manager patch for KernelSU Next..."
