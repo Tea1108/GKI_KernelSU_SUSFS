@@ -59,7 +59,7 @@ jobs:
         run: |
           if [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
             echo "KernelSU..."
-            REPO="tiann/KernelSU"
+            REPO="Tea1108/KernelSU"
             FILENAME="build-manager.yml"
           if [ "${{ inputs.kernelsu_variant }}" == "Next" ]; then
             echo "KernelSU Next..."
