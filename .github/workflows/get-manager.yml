@@ -27,7 +27,7 @@ jobs:
         run: |
           if [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
             echo "This is the Kernelsu Official variant"
-            git clone https://github.com/tiann/KernelSU.git
+            git clone https://github.com/Tea1108/KernelSU.git
             cd KernelSU
             KSU_GIT_VERSION=$(git rev-list --count HEAD)
             # ???
