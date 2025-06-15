@@ -238,6 +238,8 @@ jobs:
             cd ./KernelSU
             cp ../../susfs4ksu/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch ./
               patch -p1 --forward --fuzz=3 < 10_enable_susfs_for_ksu.patch || true
+              cp ../../kernel_patches/ksu/manager.patch ./
+              patch -p1 --forward --fuzz=3 < manager.patch
           elif [ "${{ inputs.kernelsu_variant }}" == "Next" ]; then
             echo "Applying SUSFS patches for KernelSU-Next..."
             cd ./KernelSU-Next
@@ -386,26 +388,6 @@ jobs:
             echo "CONFIG_CRYPTO_LZ4K_OPLUS=y" >> "$CONFIG_FILE"
           fi
           
-      
-      - name: Thêm tất cả người quản lý
-        run: |
-          cd "$CONFIG"
-          case "${{ inputs.kernelsu_variant }}" in
-            "Official")
-              echo "Applying Manager patch for Official KernelSU..."
-              cp ../kernel_patches/ksu/manager.patch ./
-              ;;
-            "NEXT")
-              echo "Applying Manager patch for KernelSU Next..."
-              cd KernelSU-Next
-              cp ../../kernel_patches/next/manager.patch ./
-              ;;
-            "MKSU")
-              echo "Applying Manager patch for MKSU..."
-              #cp ../kernel_patches/mksu/manager.patch .//
-              ;;
-          esac
-          patch -p1 --fuzz=3 < manager.patch || echo "No Manager Patch"
 
       - name: Thêm cài đặt cấu hình SUSFS
         run: |
