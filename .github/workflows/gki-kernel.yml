@@ -146,11 +146,11 @@ jobs:
           echo "Using branch for SUSFS: $SUSFS_BRANCH"
 
           # Clone repositories using the branch names
-          git clone https://github.com/WildPlusKernel/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
+          git clone https://github.com/Tea1108/AnyKernel3.git -b "$ANYKERNEL_BRANCH"
           git clone https://gitlab.com/simonpunk/susfs4ksu.git -b "$SUSFS_BRANCH"
-          git clone https://github.com/izsdeaman97/kernel_patches.git
+          git clone https://github.com/Tea1108/kernel_patches.git
           # Kho lưu trữ bản vá của Sukisu
-          git clone https://github.com/izsdeaman97/SukiSU_patch.git
+          git clone https://github.com/Tea1108/SukiSU_patch.git
       - name: Đặt biến môi trường CONFIG
         run: |
           # Set CONFIG dynamically based on inputs values
@@ -209,10 +209,10 @@ jobs:
 
           if [ "${{ inputs.kernelsu_variant }}" == "Official" ]; then
             echo "Adding KernelSU Official..."
-            curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash $BRANCH
+            curl -LSs "https://raw.githubusercontent.com/Tea1108/KernelSU/main/kernel/setup.sh" | bash $BRANCH
           elif [ "${{ inputs.kernelsu_variant }}" == "Next" ]; then
             echo "Adding KernelSU Next..."
-            curl -LSs "https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/next/kernel/setup.sh" | bash $BRANCH
+            curl -LSs "https://raw.githubusercontent.com/Tea1108/KernelSU-Next/next/kernel/setup.sh" | bash $BRANCH
           elif [ "${{ inputs.kernelsu_variant }}" == "MKSU" ]; then
             echo "Adding KernelSU MKSU..."
             curl -LSs "https://raw.githubusercontent.com/5ec1cff/KernelSU/main/kernel/setup.sh" | bash $BRANCH
